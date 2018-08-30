@@ -1,0 +1,253 @@
+body{
+	background : url("wallpaper.jpg");
+	background-attachment: fixed;
+	margin : 0 auto;
+	position : relative;
+}
+
+h1{
+	text-align : center;
+	font-family : 'Graduate', cursive;
+	padding : 10px;
+	font-size : 72px;
+	text-shadow: black 1px 1px, black -1px 1px, black -1px -1px, black 1px -1px;
+	color : green;
+}
+
+#bigFive{
+	display : flex;
+	flex-wrap: wrap;
+	width : 100%;
+}
+
+#competition{
+	margin : 80px;
+	border : solid black 2px;
+	width : 300px; 
+	height: 380px;
+	background-color: white;
+}
+
+#logo img{
+	width : 100%;
+	margin-left: 0px;
+}
+
+#logo{
+	margin : auto;
+	width : 200px;
+	height : 250px;
+}
+
+img {
+	width: 55%;
+    margin-left: 50px;
+}
+
+h2{
+	text-align : center;
+}
+
+.button {
+	border : solid black 2px;
+	border-radius : 5px;
+    background-color : red;
+    color : white;
+    padding: 3px 20px;
+    margin-left: 97px;
+    text-decoration : none;
+    font-family: 'Baloo Bhaina', cursive;
+}
+
+/**********************************************************************************/
+
+header {
+	background-color: #ecf0f1;
+	margin : 0 auto;
+	width : 100%;
+	position: relative;
+	border : solid black 1px;
+	opacity: 0.7;
+
+}
+
+#teamsListEngland, #teamsListSpain, #teamsListItalia, #teamsListGermany, #teamsListFrance{
+	border : solid black 2px;
+	width : 400px;
+	background-color : #ecf0f1;
+	margin-left: 5px;
+	margin-top : 20px;
+}
+
+#premierLeague, #liga, #serieA, #bundesliga, #ligue1{
+	display : flex;
+	flex-wrap: wrap;
+	width : 100%;
+}
+
+.club{
+	margin : 20px 55px;
+	border : solid black 2px;
+	width : 215px; 
+	background-color: white;
+	height: 240px;
+	border-radius : 20px;
+	background-color: #ecf0f1;
+}
+
+#team{
+	margin : auto;
+	width : 105px;
+}
+
+h3{
+	text-align : center;
+	font-family : 'Graduate', cursive;
+	font-size : 62px;
+	text-shadow: black 1px 1px, black -1px 1px, black -1px -1px, black 1px -1px;
+	color : green;
+	margin: 35px;
+}
+
+#menu {
+	display : flex;
+}
+
+#menu ul li a :first-child{
+	margin-left : 200px;
+}
+
+#menu ul li {
+	padding : 20px 50px;
+	list-style: none;
+	font-size : 20px; 
+	font-family: 'Baloo Bhaina', cursive;
+}
+
+#menu ul li a {
+	color : black;
+	text-decoration: none;
+}
+
+main{
+	display : flex;
+}
+
+
+table, tr , td{
+	border:solid black 1px;
+    border-collapse : collapse;
+    padding : 5px;
+}
+
+table tr td:hover{
+	color : red;
+}
+
+/**********************************************************************************/
+footer{
+	background-color : green;
+	height: auto;
+ 	position: relative;
+  	bottom: 0;
+  	width : 100%;
+  	border : solid black 1px;
+  	opacity : 0.8;
+  	display : flex;
+  	margin-top : 100px;
+}
+
+footer div ul {
+	height: 200px;
+	display : block;
+	margin-left : 20px;
+}
+
+footer div ul li{
+	list-style : none;
+	font-family: 'Baloo Bhaina', cursive;
+	color : white;
+}
+
+footer div {
+	width: 355px;
+}
+
+footer div ul li a{
+	color : white;
+	text-decoration : none;
+}
+
+.fab, .fas{
+	font-size : 200%;
+	color : white;
+}
+
+
+/**********************************************************************************/
+/*Contact-form*/
+
+#form{
+	margin : auto;
+	margin-top : 50px;
+	border : solid black 2px;
+	border-radius : 5px;
+	padding : 30px 50px;
+	background-color : #ecf0f1; 
+}
+
+input {
+	display: block;
+	padding : 5px;
+	width : 200px;
+	margin-bottom : 20px;
+	border : solid black 1px;
+	border-radius : 5px;
+}
+
+textarea {
+	width : 205px;
+	height : 70px;
+	border-radius : 5px;
+}
+
+label {
+	display : block;
+	font-family: 'Baloo Bhaina', cursive;
+}
+
+button {
+	display : block;
+	margin-top : 30px;
+	padding : 5px;
+	width : 100px;
+	border-radius : 5px;
+}
+
+/**********************************************************************************/
+
+#informationsBloc {
+	border : solid black 2px;
+	width : 50%;
+	display : none;
+	background-color: #ecf0f1;
+	margin-left: 130px;
+	margin-top: 20px;
+
+}
+
+#informationsBloc h2{
+	margin-bottom : 30px; 
+}
+
+#informationsBloc img{
+	width: 150px;
+    margin-left: 280px; 
+    margin-bottom : 50px;
+}
+
+.informationsTeam p{
+	margin-left: 50px;
+	font-family: 'Baloo Bhaina', cursive;
+}
+
