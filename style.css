@@ -218,10 +218,11 @@ label {
 
 button {
 	display : block;
-	margin-top : 30px;
+	/*margin-top : 30px;*/
 	padding : 5px;
 	width : 100px;
 	border-radius : 5px;
+	margin: 30px auto 0px auto;
 }
 
 /**********************************************************************************/

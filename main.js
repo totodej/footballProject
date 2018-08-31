@@ -109,6 +109,7 @@ function clickEventHandlerForPremierLeague(){
 }
 
 function renderTrophiesForPremierLeague(e){
+
 	var dataTeam = this.getAttribute('data-team');
 
 	displayForPremierLeague();
@@ -118,16 +119,27 @@ function renderTrophiesForPremierLeague(e){
 			var teamDetailsHtml = "<h2>" + premierLeague[y].name + " Trophies</h2><img src='teams/PremierLeague/" + premierLeague[y].logo + "'><p>First Division : " + premierLeague[y].firstDivision 
 			+ "</p><p>FA Cup : " + premierLeague[y].faCup + "</p><p>League Cup : " + premierLeague[y].leagueCup 
 			+ "</p><p>CommunityShield : " + premierLeague[y].communityShield + "</p>";
-			var informationsTeam = document.querySelector(".informationsTeam");
-					
-			if(informationsTeam != null){
-				var detailsTeam = document.querySelector('.club[data-team="' + premierLeague[y].name +'"]');
-				informationsTeam.innerHTML = teamDetailsHtml;
-				console.log(detailsTeam);
-			}				
+			
+			getEnglishClubByName(teamDetailsHtml, y);		
 		}
 	}
-}		
+}
+
+
+function getEnglishClubByName(teamDetailsHtml, y){
+
+	var informationsTeam = document.querySelector(".informationsTeam");
+
+	getEnglishClubElementByName(y);
+	
+	informationsTeam.innerHTML = teamDetailsHtml;
+		
+}	
+
+function getEnglishClubElementByName(y){
+	
+	var detailsTeam = document.querySelector('.club[data-team="' + premierLeague[y].name +'"]');
+}
 
 function displayForPremierLeague(){
 	if(document.querySelector("#premierLeague") != null){
@@ -209,16 +221,26 @@ function renderTrophiesForLiga(e){
 		if(dataTeam === liga[y].name){
 			var teamDetailsHtml = "<h2>" + liga[y].name + " Trophies</h2><img src='teams/LaLiga/" + liga[y].logo + "'><p>Primera Division : " + liga[y].primeraDivision 
 			+ "</p><p>Copa Del Rey : " + liga[y].copaDelRey + "</p><p>Supercopa De Espana : " + liga[y].supercopaDeEspana + "</p>";
-			var informationsTeam = document.querySelector(".informationsTeam");
-					
-			if(informationsTeam != null){
-				var detailsTeam = document.querySelector('.club[data-team="' + liga[y].name +'"]');
-				informationsTeam.innerHTML = teamDetailsHtml;
-				console.log(detailsTeam);
-			}				
+			
+			getSpainClubByName(teamDetailsHtml, y);			
 		}
 	}
 }		
+
+function getSpainClubByName(teamDetailsHtml, y){
+
+	var informationsTeam = document.querySelector(".informationsTeam");
+					
+	getSpainClubElementByName(y);
+
+	informationsTeam.innerHTML = teamDetailsHtml;
+			
+}	
+
+function getSpainClubElementByName(y){
+
+	var detailsTeam = document.querySelector('.club[data-team="' + liga[y].name +'"]');
+}
 
 function displayForLiga(){
 	if(document.querySelector("#liga") != null){
@@ -300,16 +322,27 @@ function renderTrophiesForSerieA(e){
 		if(dataTeam === serieA[y].name){
 			var teamDetailsHtml = "<h2>" + serieA[y].name + " Trophies</h2><img src='teams/SerieA/" + serieA[y].logo + "'><p>Campionato italiano : " + serieA[y].firstDivision 
 			+ "</p><p>Coppa Italia : " + serieA[y].italiaCup + "</p><p>Supercoppa italiana : " + serieA[y].supercupItalia + "</p>";
-			var informationsTeam = document.querySelector(".informationsTeam");
+
+			getItalianClubByName(teamDetailsHtml, y);	
 					
-			if(informationsTeam != null){
-				var detailsTeam = document.querySelector('.club[data-team="' + serieA[y].name +'"]');
-				informationsTeam.innerHTML = teamDetailsHtml;
-				console.log(detailsTeam);
-			}				
 		}
 	}
 }		
+
+function getItalianClubByName(teamDetailsHtml, y){
+
+	var informationsTeam = document.querySelector(".informationsTeam");
+					
+	getItalianClubElementByName(y);
+	
+	informationsTeam.innerHTML = teamDetailsHtml;
+}
+
+function getItalianClubElementByName(y){
+
+	var detailsTeam = document.querySelector('.club[data-team="' + serieA[y].name +'"]');
+}
+
 
 function displayForSerieA(){
 	if(document.querySelector("#serieA") != null){
@@ -386,16 +419,26 @@ function renderTrophiesForBundesliga(e){
 		if(dataTeam === bundesliga[y].name){
 			var teamDetailsHtml = "<h2>" + bundesliga[y].name + " Trophies</h2><img src='teams/Bundesliga/" + bundesliga[y].logo + "'><p>German Champions : " + bundesliga[y].firstDivision 
 			+ "</p><p>German Cup : " + bundesliga[y].germanCup + "</p><p>German Super Cup : " + bundesliga[y].germansuperCup + "</p>";
-			var informationsTeam = document.querySelector(".informationsTeam");
-					
-			if(informationsTeam != null){
-				var detailsTeam = document.querySelector('.club[data-team="' + bundesliga[y].name +'"]');
-				informationsTeam.innerHTML = teamDetailsHtml;
-				console.log(detailsTeam);
-			}				
+				
+			getGermanClubByName(teamDetailsHtml, y);		
 		}
 	}
 }		
+
+function getGermanClubByName(teamDetailsHtml, y){
+
+	var informationsTeam = document.querySelector(".informationsTeam");
+					
+	getGermanClubElementByName(y);
+	
+	informationsTeam.innerHTML = teamDetailsHtml;
+	
+}
+
+function getGermanClubElementByName(y){
+
+	var detailsTeam = document.querySelector('.club[data-team="' + bundesliga[y].name +'"]');
+}
 
 function displayForBundesliga(){
 	if(document.querySelector("#bundesliga") != null){
@@ -483,10 +526,26 @@ function renderTrophiesForLigue1(e){
 				var detailsTeam = document.querySelector('.club[data-team="' + ligue1[y].name +'"]');
 				informationsTeam.innerHTML = teamDetailsHtml;
 				console.log(detailsTeam);
+
+				getFrenchClubByName(teamDetailsHtml, y);
 			}				
 		}
 	}
-}		
+}	
+
+function getFrenchClubByName(teamDetailsHtml, y){
+
+	var informationsTeam = document.querySelector(".informationsTeam");
+	
+	getFrenchClubElementByName(y)
+
+	informationsTeam.innerHTML = teamDetailsHtml;
+}	
+
+function getFrenchClubElementByName(y){
+
+	var detailsTeam = document.querySelector('.club[data-team="' + ligue1[y].name +'"]');
+}
 
 function displayForLigue1(){
 	if(document.querySelector("#ligue1") != null){
