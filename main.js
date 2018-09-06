@@ -101,29 +101,38 @@ var countries = [{league : "", logo : "", page : "Home", clubs : ""},
 			{name : "Toulouse FC",logo : "toulouse.png", firstDivision : "0", franceCup : "0", leagueCup : "0", supercupFrance : "0"}]}];
 
 
+var bigFive = document.getElementById("bigFive");
+var menu = document.getElementById("menu");
+var championship = document.getElementById("championship");
+var teamsList = document.getElementById("teamsList");
+var informationsTeam = document.querySelector(".informationsTeam");
+var informationsBloc = document.querySelector("#informationsBloc");
+var championships = document.getElementById("championships");
+var displayForm = document.getElementById("displayForm");
+var displayTitle = document.getElementById("displayTitle");
+var contact = document.getElementById("contact");
+
 function index(){
 
 	for( var i = 0 ; i < countries.length ; i++ ){
 
 		var country = countries[i];
 
-		if(document.getElementById("menu") != null){
-			document.getElementById("menu").innerHTML += "<ul><li class='page' data-league='" + country.page + "'>" + country.page + "</li></ul>";
+		if(menu != null){
+			menu.innerHTML += "<ul><li class='page' data-league='" + country.page + "'>" + country.page + "</li></ul>";
 		}
-
-		if(document.getElementById("bigFive") != null){
-			document.getElementById("bigFive").innerHTML += "<div id='competition'><h2>" + country.league + "</h2><div id='logo'><img src='logos/" + 
+		if(bigFive != null){
+			bigFive.innerHTML += "<div id='competition'><h2>" + country.league + "</h2><div id='logo'><img src='logos/" + 
 			country.logo + "'></div><button class='button' data-league='" + country.page + "'>Click here</button></div>";
 		}
 
-		document.getElementById("displayTitle").innerHTML = "<h1>The 5 biggest championships 2018-2019</h1>";
+		displayTitle.innerHTML = "<h1>The 5 biggest championships 2018-2019</h1>";
 
 		var pages = document.querySelectorAll(".page");
 		for(var j = 0 ; j < pages.length ; j++){
 			var page = pages[j];
 			page.addEventListener("click", renderleagues);
 		}
-
 		var buttons = document.querySelectorAll(".button");
 		for(var j = 0 ; j < buttons.length ; j++){
 			var button = buttons[j];
@@ -131,111 +140,82 @@ function index(){
 		}
 
 		function renderleagues(e){
+
 			var dataLeague = this.getAttribute("data-league");
 			console.log(dataLeague);
 
+			championship.innerHTML = "";
+			teamsList.innerHTML = "";
 
-
-			document.getElementById("championship").innerHTML = "";
-			document.getElementById("teamsList").innerHTML = "";
-
-			//getLeagueInfo(dataLeague);	
+			if(dataLeague === "Premier League" || dataLeague === "La Liga" || dataLeague === "Serie A" || dataLeague === "Bundesliga" || dataLeague === "Ligue 1"){
+				championships.style.display = "flex";
+				bigFive.style.display = "none";
+				informationsBloc.style.display = "none";	
+				displayForm.style.display = "none";
+				championship.style.display = "flex";
+			}	
 
 			if(dataLeague === "Home"){
-				document.getElementById("bigFive").style.display = "flex";
-				document.getElementById("championships").style.display = "none";
-				document.getElementById("displayDiv").style.display = "none";
+				bigFive.style.display = "flex";
+				championships.style.display = "none";
+				displayForm.style.display = "none";
+				displayTitle.innerHTML = "<h1>The 5 biggest championships 2018-2019</h1>";
 			}
-			else if(dataLeague === "Premier League"){ 
-				renderPremierLeagueClubs();
-				document.getElementById("championships").style.display = "flex";
-				document.getElementById("bigFive").style.display = "none";	
-				document.getElementById("informationsBloc").style.display = "none";
-				document.getElementById("displayDiv").style.display = "none";
-				document.getElementById("championship").style.display = "flex";
-				document.getElementById("displayTitle").innerHTML = "<h1>Premier League</h1>";
-			}	
-			else if(dataLeague === "La Liga"){
-				renderLigaClubs();
-				document.getElementById("championships").style.display = "flex";
-				document.getElementById("bigFive").style.display = "none";
-				document.getElementById("informationsBloc").style.display = "none";
-				document.getElementById("displayDiv").style.display = "none";
-				document.getElementById("championship").style.display = "flex";
-				document.getElementById("displayTitle").innerHTML = "<h1>La Liga</h1>";
-			}	
-			else if(dataLeague === "Serie A"){
-				renderSerieAClubs();
-				document.getElementById("championships").style.display = "flex";
-				document.getElementById("bigFive").style.display = "none";
-				document.getElementById("informationsBloc").style.display = "none";
-				document.getElementById("displayDiv").style.display = "none";
-				document.getElementById("championship").style.display = "flex";
-				document.getElementById("displayTitle").innerHTML = "<h1>Serie A</h1>";
-			}
-			else if(dataLeague === "Bundesliga"){
-				renderBundesligaClubs();
-				document.getElementById("championships").style.display = "flex";
-				document.getElementById("bigFive").style.display = "none";
-				document.getElementById("informationsBloc").style.display = "none";
-				document.getElementById("displayDiv").style.display = "none";
-				document.getElementById("championship").style.display = "flex";
-				document.getElementById("displayTitle").innerHTML = "<h1>Bundesliga</h1>";
-			}
-			else if(dataLeague === "Ligue 1"){
-				renderLigue1Clubs();
-				document.getElementById("championships").style.display = "flex";
-				document.getElementById("bigFive").style.display = "none";
-				document.getElementById("informationsBloc").style.display = "none";
-				document.getElementById("displayDiv").style.display = "none";
-				document.getElementById("championship").style.display = "flex";
-				document.getElementById("displayTitle").innerHTML = "<h1>Ligue 1</h1>";
-			}
+			renderLeagueClubs(dataLeague);	
 		}
 	}
 }
-/*
-function getLeagueInfo(league){
-	
-	
+
+function renderLeagueClubs(dataLeague){
+	if(dataLeague === "Premier League"){ 
+	renderPremierLeagueClubs();
+	displayTitle.innerHTML = "<h1>Premier League</h1>";
+	}	
+	else if(dataLeague === "La Liga"){
+		renderLigaClubs();
+		displayTitle.innerHTML = "<h1>La Liga</h1>";
+	}	
+	else if(dataLeague === "Serie A"){
+		renderSerieAClubs();
+		displayTitle.innerHTML = "<h1>Serie A</h1>";
+	}
+	else if(dataLeague === "Bundesliga"){
+		renderBundesligaClubs();
+		displayTitle.innerHTML = "<h1>Bundesliga</h1>";
+	}
+	else if(dataLeague === "Ligue 1"){
+		renderLigue1Clubs();
+		displayTitle.innerHTML = "<h1>Ligue 1</h1>";
+	}
 }
-*/
 
 index()
-
-
 
 ////////////////////////////////////////////////////////////////////////////
 	
 function renderPremierLeagueClubs(){
 
 	for(var i = 0 ; i < countries[1].clubs.length ; i++){
-
 		countries[1].clubs[i];
-
-		if(document.getElementById("championship") != null){
-			document.getElementById("championship").innerHTML += "<div class='club' data-team='"+ countries[1].clubs[i].name + "'><h2>" + countries[1].clubs[i].name 
+		if(championship != null){
+			championship.innerHTML += "<div class='club' data-team='"+ countries[1].clubs[i].name + "'><h2>" + countries[1].clubs[i].name 
 			+ "</h2><div class='logoTeam'><img src='teams/PremierLeague/" + 
 			countries[1].clubs[i].logo + "'></div></div>";
 		}
-		
-		if(document.getElementById("teamsList") != null){
-			document.getElementById("teamsList").innerHTML += "<tr><td class='clubList' data-team='"+ countries[1].clubs[i].name + "'>" + countries[1].clubs[i].name + "</td></tr>";
+		if(teamsList != null){
+			teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ countries[1].clubs[i].name + "'>" + countries[1].clubs[i].name + "</td></tr>";
 		}
-
-		clickEventHandlerForPremierLeague();
-		
+		initializeForPremierLeague();	
 	}	
 }
 
-function clickEventHandlerForPremierLeague(){
+function initializeForPremierLeague(){
 
 	var detail = document.querySelectorAll(".club");
 	for(var z = 0 ; z < detail.length ; z++){
 		var currentDetailBtn = detail[z];
 		currentDetailBtn.addEventListener('click', renderTrophiesForPremierLeague);		
 	}
-
 	var detailClubList = document.querySelectorAll(".clubList");
 	for(var z = 0 ; z < detailClubList.length ; z++){
 		var currentDetailBtn = detailClubList[z];
@@ -246,9 +226,7 @@ function clickEventHandlerForPremierLeague(){
 function renderTrophiesForPremierLeague(e){
 
 	var dataTeam = this.getAttribute('data-team');
-
 	displayForPremierLeague();
-
 	for(var y = 0 ; y < countries[1].clubs.length ; y++){
 		if(dataTeam === countries[1].clubs[y].name){
 			var teamDetailsHtml = "<h2>" + countries[1].clubs[y].name + " Trophies</h2><img src='teams/PremierLeague/" + countries[1].clubs[y].logo + "'><p>First Division : " + countries[1].clubs[y].firstDivision 
@@ -260,60 +238,53 @@ function renderTrophiesForPremierLeague(e){
 	}
 }
 
+function getEnglishClubByName(teamDetailsHtml, y){	
 
-function getEnglishClubByName(teamDetailsHtml, y){
-	var informationsTeam = document.querySelector(".informationsTeam");
 	getEnglishClubElementByName(y);
 	informationsTeam.innerHTML = teamDetailsHtml;
-	
 }	
 
 function getEnglishClubElementByName(y){
+
 	var detailsTeam = document.querySelector('.club[data-team="' + countries[1].clubs[y].name +'"]');
 	console.log(detailsTeam);
 }
 
 function displayForPremierLeague(){
-	if(document.querySelector("#championship") != null){
-		document.querySelector("#championship").style.display = "none";
+
+	if(championship != null){
+		championship.style.display = "none";
 	}
-	if(document.querySelector("#informationsBloc") != null){
-		document.querySelector("#informationsBloc").style.display = "block";	
+	if(informationsBloc != null){
+		informationsBloc.style.display = "block";	
 	}
 }
-
-//renderPremierLeagueClubs();			
+		
 
 ////////////////////////////////////////////////////////////////////////////
 
 function renderLigaClubs(){
 
 	for(var i = 0 ; i < countries[2].clubs.length ; i++){
-
 		countries[2].clubs[i];
-
-		if(document.getElementById("championship") != null){
-			document.getElementById("championship").innerHTML += "<div class='club' data-team='"+ countries[2].clubs[i].name + "'><h2>" +
+		if(championship != null){
+			championship.innerHTML += "<div class='club' data-team='"+ countries[2].clubs[i].name + "'><h2>" +
 			countries[2].clubs[i].name + "</h2><div id='teams'><img src='teams/LaLiga/" + countries[2].clubs[i].logo + "'></div></div>";
 		}
-		
-
-		if(document.getElementById("teamsList") != null){
-			document.getElementById("teamsList").innerHTML += "<tr><td class='clubList' data-team='"+ countries[2].clubs[i].name + "'>" + countries[2].clubs[i].name + "</td></tr>";
+		if(teamsList != null){
+			teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ countries[2].clubs[i].name + "'>" + countries[2].clubs[i].name + "</td></tr>";
 		}
-
-		clickEventHandlerForLiga();
+		initializeForLiga();
 	}
 }
 
-function clickEventHandlerForLiga(){
+function initializeForLiga(){
 
 	var detailClub = document.querySelectorAll(".club");
 	for(var z = 0 ; z < detailClub.length ; z++){
 		var currentDetailBtn = detailClub[z];
 		currentDetailBtn.addEventListener('click', renderTrophiesForLiga);		
 	}
-
 	var detailClubList = document.querySelectorAll(".clubList");
 	for(var z = 0 ; z < detailClubList.length ; z++){
 		var currentDetailBtn = detailClubList[z];
@@ -322,10 +293,9 @@ function clickEventHandlerForLiga(){
 }
 
 function renderTrophiesForLiga(e){
+
 	var dataTeam = this.getAttribute('data-team');
-
 	displayForLiga();
-
 	for(var y = 0 ; y < countries[2].clubs.length ; y++){
 		if(dataTeam === countries[2].clubs[y].name){
 			var teamDetailsHtml = "<h2>" + countries[2].clubs[y].name + " Trophies</h2><img src='teams/LaLiga/" + countries[2].clubs[y].logo + "'><p>Primera Division : " + countries[2].clubs[y].primeraDivision 
@@ -337,59 +307,52 @@ function renderTrophiesForLiga(e){
 }		
 
 function getSpainClubByName(teamDetailsHtml, y){
-	var informationsTeam = document.querySelector(".informationsTeam");
+
 	getSpainClubElementByName(y);
 	informationsTeam.innerHTML = teamDetailsHtml;
 }	
 
 function getSpainClubElementByName(y){
+
 	var detailsTeam = document.querySelector('.club[data-team="' + countries[2].clubs[y].name +'"]');
 	console.log(detailsTeam);
 }
 
 function displayForLiga(){
-	if(document.querySelector("#championship") != null){
-		document.querySelector("#championship").style.display = "none";
-	}
 
-		document.querySelector("#informationsBloc").style.display = "block";	
+	if(championship != null){
+		championship.style.display = "none";
+	}
+	if(informationsBloc != null){
+		informationsBloc.style.display = "block";	
+	}
 	
 }
-
-
-//renderLigaClubs();
-
 
 ////////////////////////////////////////////////////////////////////////////
 
 function renderSerieAClubs(){
 
 	for(var i = 0 ; i < countries[3].clubs.length ; i++){
-
 		countries[3].clubs[i];
-
-		if(document.getElementById("championship") != null){
-			document.getElementById("championship").innerHTML += "<div class='club' data-team='"+ countries[3].clubs[i].name + "'><h2>" + countries[3].clubs[i].name + "</h2><div id='teams'><img src='teams/serieA/" + 
+		if(championship != null){
+			championship.innerHTML += "<div class='club' data-team='"+ countries[3].clubs[i].name + "'><h2>" + countries[3].clubs[i].name + "</h2><div id='teams'><img src='teams/serieA/" + 
 			countries[3].clubs[i].logo + "'></div></div>";
 		}
-		
-
-		if(document.getElementById("teamsList") != null){
-			document.getElementById("teamsList").innerHTML += "<tr><td class='clubList' data-team='"+ countries[3].clubs[i].name + "'>" + countries[3].clubs[i].name + "</td></tr>";
+		if(teamsList != null){
+			teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ countries[3].clubs[i].name + "'>" + countries[3].clubs[i].name + "</td></tr>";
 		}
-		
-		clickEventHandlerForSerieA();	
+		initializeForSerieA();	
 	}
 }
 
-function clickEventHandlerForSerieA(){
+function initializeForSerieA(){
 
 	var detailClub = document.querySelectorAll(".club");
 	for(var z = 0 ; z < detailClub.length ; z++){
 		var currentDetailBtn = detailClub[z];
 		currentDetailBtn.addEventListener('click', renderTrophiesForSerieA);		
 	}
-
 	var detailClubList = document.querySelectorAll(".clubList");
 	for(var z = 0 ; z < detailClubList.length ; z++){
 		var currentDetailBtn = detailClubList[z];
@@ -399,72 +362,63 @@ function clickEventHandlerForSerieA(){
 
 function renderTrophiesForSerieA(e){
 	var dataTeam = this.getAttribute('data-team');
-
 	displayForSerieA();
-
 	for(var y = 0 ; y < countries[3].clubs.length ; y++){
 		if(dataTeam === countries[3].clubs[y].name){
 			var teamDetailsHtml = "<h2>" + countries[3].clubs[y].name + " Trophies</h2><img src='teams/SerieA/" + countries[3].clubs[y].logo + "'><p>Campionato italiano : " + countries[3].clubs[y].firstDivision 
 			+ "</p><p>Coppa Italia : " + countries[3].clubs[y].italiaCup + "</p><p>Supercoppa italiana : " + countries[3].clubs[y].supercupItalia + "</p>";
 
-			getItalianClubByName(teamDetailsHtml, y);	
-					
+			getItalianClubByName(teamDetailsHtml, y);				
 		}
 	}
 }		
 
 function getItalianClubByName(teamDetailsHtml, y){
-	var informationsTeam = document.querySelector(".informationsTeam");
+
 	getItalianClubElementByName(y);
 	informationsTeam.innerHTML = teamDetailsHtml;
 }
 
 function getItalianClubElementByName(y){
+
 	var detailsTeam = document.querySelector('.club[data-team="' + countries[3].clubs[y].name +'"]');
 	console.log(detailsTeam);
 }
 
-
 function displayForSerieA(){
-	if(document.querySelector("#championship") != null){
-		document.querySelector("#championship").style.display = "none";
+
+	if(championship != null){
+		championship.style.display = "none";
 	}
-	if(document.querySelector("#informationsBloc") != null){
-		document.querySelector("#informationsBloc").style.display = "block";	
+	if(informationsBloc != null){
+		informationsBloc.style.display = "block";	
 	}
 }
-
-//renderSerieAClubs();
 
 ////////////////////////////////////////////////////////////////////////////
 
 function renderBundesligaClubs(){
 
 	for(var i = 0 ; i < countries[4].clubs.length ; i++){
-
 		countries[4].clubs[i];
-
-		if(document.getElementById("championship") != null){
-			document.getElementById("championship").innerHTML += "<div class='club' data-team='"+ countries[4].clubs[i].name + "'><h2>" + countries[4].clubs[i].name + "</h2><div id='teams'><img src='teams/Bundesliga/" + 
+		if(championship != null){
+			championship.innerHTML += "<div class='club' data-team='"+ countries[4].clubs[i].name + "'><h2>" + countries[4].clubs[i].name + "</h2><div id='teams'><img src='teams/Bundesliga/" + 
 			countries[4].clubs[i].logo + "'></div></div>";
 		}
-
-		if(document.getElementById("teamsList") != null){
-			document.getElementById("teamsList").innerHTML += "<tr><td class='clubList' data-team='"+ countries[4].clubs[i].name + "'>" + countries[4].clubs[i].name + "</td></tr>";
+		if(teamsList != null){
+			teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ countries[4].clubs[i].name + "'>" + countries[4].clubs[i].name + "</td></tr>";
 		}
-
-		clickEventHandlerForBundesliga();
+		initializeForBundesliga();
 	}
 }
 
-function clickEventHandlerForBundesliga(){
+function initializeForBundesliga(){
 
 	var detailClub = document.querySelectorAll(".club");
 	for(var z = 0 ; z < detailClub.length ; z++){
 		var currentDetailBtn = detailClub[z];
 		currentDetailBtn.addEventListener('click', renderTrophiesForBundesliga);		
 	}
-
 	var detailClubList = document.querySelectorAll(".clubList");
 	for(var z = 0 ; z < detailClubList.length ; z++){
 		var currentDetailBtn = detailClubList[z];
@@ -474,42 +428,38 @@ function clickEventHandlerForBundesliga(){
 
 function renderTrophiesForBundesliga(e){
 	var dataTeam = this.getAttribute('data-team');
-
 	displayForBundesliga();
-
 	for(var y = 0 ; y < countries[4].clubs.length ; y++){
 		if(dataTeam === countries[4].clubs[y].name){
 			var teamDetailsHtml = "<h2>" + countries[4].clubs[y].name + " Trophies</h2><img src='teams/Bundesliga/" + countries[4].clubs[y].logo + "'><p>German Champions : " + countries[4].clubs[y].firstDivision 
 			+ "</p><p>German Cup : " + countries[4].clubs[y].germanCup + "</p><p>German Super Cup : " + countries[4].clubs[y].germansuperCup + "</p>";
-				
-
+			
 			getGermanClubByName(teamDetailsHtml, y);		
 		}
 	}
 }		
 
 function getGermanClubByName(teamDetailsHtml, y){
-	var informationsTeam = document.querySelector(".informationsTeam");
+
 	getGermanClubElementByName(y);
 	informationsTeam.innerHTML = teamDetailsHtml;
 }
 
 function getGermanClubElementByName(y){
+
 	var detailsTeam = document.querySelector('.club[data-team="' + countries[4].clubs[y].name +'"]');
 	console.log(detailsTeam);
 }
 
 function displayForBundesliga(){
-	if(document.querySelector("#championship") != null){
-		document.querySelector("#championship").style.display = "none";
+
+	if(championship != null){
+		championship.style.display = "none";
 	}
-	if(document.querySelector("#informationsBloc") != null){
-		document.querySelector("#informationsBloc").style.display = "block";	
+	if(informationsBloc != null){
+		informationsBloc.style.display = "block";	
 	}
 }
-
-//renderBundesligaClubs();
-
 
 ////////////////////////////////////////////////////////////////////////////
 
@@ -517,31 +467,25 @@ function displayForBundesliga(){
 function renderLigue1Clubs(){
 
 	for(var i = 0 ; i < countries[5].clubs.length ; i++){
-
 		countries[5].clubs[i];
-
-		if(document.getElementById("championship") != null){
-			document.getElementById("championship").innerHTML += "<div class='club' data-team='"+ countries[5].clubs[i].name + "'><h2>" + countries[5].clubs[i].name + "</h2><div id='teams'><img src='teams/Ligue1/" + 
+		if(championship != null){
+			championship.innerHTML += "<div class='club' data-team='"+ countries[5].clubs[i].name + "'><h2>" + countries[5].clubs[i].name + "</h2><div id='teams'><img src='teams/Ligue1/" + 
 			countries[5].clubs[i].logo + "'></div></div>";
 		}
-		
-
-		if(document.getElementById("teamsList") != null){
-			document.getElementById("teamsList").innerHTML += "<tr><td class='clubList' data-team='"+ countries[5].clubs[i].name + "'>" + countries[5].clubs[i].name + "</td></tr>";
+		if(teamsList != null){
+			teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ countries[5].clubs[i].name + "'>" + countries[5].clubs[i].name + "</td></tr>";
 		}
-
-		clickEventHandlerForLigue1();
+		initializeForLigue1();
 	}
 }
 
-function clickEventHandlerForLigue1(){
+function initializeForLigue1(){
 
 	var detailClub = document.querySelectorAll(".club");
 	for(var z = 0 ; z < detailClub.length ; z++){
 		var currentDetailBtn = detailClub[z];
 		currentDetailBtn.addEventListener('click', renderTrophiesForLigue1);		
 	}
-
 	var detailClubList = document.querySelectorAll(".clubList");
 	for(var z = 0 ; z < detailClubList.length ; z++){
 		var currentDetailBtn = detailClubList[z];
@@ -561,9 +505,7 @@ function renderTrophiesForLigue1(e){
 			var informationsTeam = document.querySelector(".informationsTeam");
 					
 			if(informationsTeam != null){
-				
 				informationsTeam.innerHTML = teamDetailsHtml;
-
 				getFrenchClubByName(teamDetailsHtml, y);
 			}				
 		}
@@ -571,45 +513,42 @@ function renderTrophiesForLigue1(e){
 }	
 
 function getFrenchClubByName(teamDetailsHtml, y){
-	var informationsTeam = document.querySelector(".informationsTeam");
+
 	getFrenchClubElementByName(y);
 	informationsTeam.innerHTML = teamDetailsHtml;
 }	
 
 function getFrenchClubElementByName(y){
+
 	var detailsTeam = document.querySelector('.club[data-team="' + countries[5].clubs[y].name +'"]');
 	console.log(detailsTeam);
 }
 
 function displayForLigue1(){
-	if(document.querySelector("#championship") != null){
-		document.querySelector("#championship").style.display = "none";
+
+	if(championship != null){
+		championship.style.display = "none";
 	}
-	if(document.querySelector("#informationsBloc") != null){
-		document.querySelector("#informationsBloc").style.display = "block";	
+	if(informationsBloc != null){
+		informationsBloc.style.display = "block";	
 	}
 }
 
-//renderLigue1Clubs();
-
 ////////////////////////////////////////////////////////////////////////////
-
-var contact = document.getElementById("contact");
 
 if(contact != null){
 	contact.addEventListener("click", form);
 }
 
-
 function form(){
-	document.getElementById("championships").style.display = "none";
-	document.getElementById("informationsBloc").style.display = "none";
-	document.getElementById("bigFive").style.display = "none";
-	document.getElementById("displayDiv").style.display = "block";
-	document.getElementById("displayTitle").innerHTML = "<h1>Contact-Form</h1>";
+	championships.style.display = "none";
+	informationsBloc.style.display = "none";
+	bigFive.style.display = "none";
+	displayForm.style.display = "block";
+	displayTitle.innerHTML = "<h1>Contact-Form</h1>";
 
 }
-var theForm = document.getElementById("form")
+var theForm = document.getElementById("form");
 if(theForm != null){
 	theForm.addEventListener("submit", validation, false);
 }
@@ -634,10 +573,8 @@ function validation(){
 	contactForm.subject = subject.value;
 	contactForm.message = message.value;
 
-
 	localStorage.setItem("Contact-Form", JSON.stringify(contactForm));
 
-	
 	return true;
 }
 
