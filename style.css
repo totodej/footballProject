@@ -28,6 +28,14 @@ h1{
 	background-color: white;
 }
 
+#competition:nth-of-type(1){
+	display : none;
+}
+
+#competition:nth-of-type(5){
+	margin-left: 310px;
+}
+
 #logo img{
 	width : 100%;
 	margin-left: 0px;
@@ -57,6 +65,8 @@ h2{
     margin-left: 97px;
     text-decoration : none;
     font-family: 'Baloo Bhaina', cursive;
+    margin-top: 0px;
+    cursor : pointer;
 }
 
 /**********************************************************************************/
@@ -71,7 +81,7 @@ header {
 
 }
 
-#teamsListEngland, #teamsListSpain, #teamsListItalia, #teamsListGermany, #teamsListFrance{
+#teamsList{
 	border : solid black 2px;
 	width : 400px;
 	background-color : #ecf0f1;
@@ -79,7 +89,12 @@ header {
 	margin-top : 20px;
 }
 
-#premierLeague, #liga, #serieA, #bundesliga, #ligue1{
+#championships{
+	display : none;
+	width : 100%;
+}
+
+#championship{
 	display : flex;
 	flex-wrap: wrap;
 	width : 100%;
@@ -93,6 +108,7 @@ header {
 	height: 240px;
 	border-radius : 20px;
 	background-color: #ecf0f1;
+	cursor : pointer;
 }
 
 #team{
@@ -122,6 +138,7 @@ h3{
 	list-style: none;
 	font-size : 20px; 
 	font-family: 'Baloo Bhaina', cursive;
+	cursor : pointer;
 }
 
 #menu ul li a {
@@ -138,6 +155,7 @@ table, tr , td{
 	border:solid black 1px;
     border-collapse : collapse;
     padding : 5px;
+    cursor : pointer;
 }
 
 table tr td:hover{
@@ -186,9 +204,12 @@ footer div ul li a{
 
 /**********************************************************************************/
 /*Contact-form*/
+#displayDiv{
+	display : none;
+	margin : auto;
+}
 
 #form{
-	margin : auto;
 	margin-top : 50px;
 	border : solid black 2px;
 	border-radius : 5px;
@@ -251,4 +272,10 @@ button {
 	margin-left: 50px;
 	font-family: 'Baloo Bhaina', cursive;
 }
+
+.fa-address-card {
+	cursor : pointer;
+}
+
+
 
