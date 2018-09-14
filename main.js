@@ -120,13 +120,9 @@ var message = document.getElementById("message");
 function index(){
 	for( var i = 0 ; i < countries.length ; i++ ){
 		var country = countries[i];
-		if(menu != null){
-			menu.innerHTML += "<ul><li class='page' data-league='" + country.page + "'>" + country.page + "</li></ul>";
-		}
-		if(bigFive != null){
-			bigFive.innerHTML += "<div id='competition'><h2>" + country.league + "</h2><div id='logo'><img src='logos/" + 
-			country.logo + "'></div><button class='button' data-league='" + country.page + "'>Click here</button></div>";
-		}
+		menu.innerHTML += "<ul><li class='page' data-league='" + country.page + "'>" + country.page + "</li></ul>";
+		bigFive.innerHTML += "<div id='competition'><h2>" + country.league + "</h2><div id='logo'><img src='logos/" + 
+		country.logo + "'></div><button class='button' data-league='" + country.page + "'>Click here</button></div>";
 		displayTitle.innerHTML = "<h1>The 5 biggest championships 2018-2019</h1>";
 		var pages = document.querySelectorAll(".page");
 		for(var j = 0 ; j < pages.length ; j++){
@@ -177,17 +173,13 @@ index();
 function renderClubs(dataLeague){
 	var leagueObject = filterLeague(dataLeague);
 	displayTitle.innerHTML = "<h1>" + dataLeague + "</h1>";
-	for(var i = 0 ; i < leagueObject.clubs.length ; i++){
-		if(championship != null){
-			championship.innerHTML += "<div class='club' data-team='"+ leagueObject.clubs[i].name + 
-			"'><h2>" + leagueObject.clubs[i].name 
-			+ "</h2><div class='logoTeam'><img src='teams/" + 
-			leagueObject.clubs[i].logo + "'></div></div>";	
-		}
-		if(teamsList != null){
-			teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ leagueObject.clubs[i].name +
-			 "'>" + leagueObject.clubs[i].name + "</td></tr>";
-		}
+	for(var i = 0 ; i < leagueObject.clubs.length ; i++){	
+		championship.innerHTML += "<div class='club' data-team='"+ leagueObject.clubs[i].name + 
+		"'><h2>" + leagueObject.clubs[i].name 
+		+ "</h2><div class='logoTeam'><img src='teams/" + 
+		leagueObject.clubs[i].logo + "'></div></div>";			
+		teamsList.innerHTML += "<tr><td class='clubList' data-team='"+ leagueObject.clubs[i].name +
+		 "'>" + leagueObject.clubs[i].name + "</td></tr>";
 		initializeClickHandler();	
 	}	
 }
@@ -215,7 +207,6 @@ function renderTrophies(e){
 				for(var i = 0 ; i < countries[a].clubs[y].titles.length ; i++){
 					var teamDetailsHtml = "<h2>" + countries[a].clubs[y].name + " Trophies</h2><img src='teams/" 
 					+ countries[a].clubs[y].logo + "'>"
-					
 					teamDetailsTitles += "<p>" + countries[a].clubs[y].titles[i].title + " : " + countries[a].clubs[y].titles[i].count + "</p>";
 					console.log(countries[a].clubs[y].titles[i].title);
 				}
@@ -241,9 +232,7 @@ function displayClubInformations(){
 
 //Contact-Form
 
-if(contact != null){
-	contact.addEventListener("click", form);
-}
+contact.addEventListener("click", form);
 
 function form(){
 	championships.style.display = "none";
@@ -258,9 +247,8 @@ function form(){
 	message.value = "";
 }
 
-if(theForm != null){
-	theForm.addEventListener("submit", validation);
-}
+theForm.addEventListener("submit", validation);
+
 var contactForm = {
 		name1 : "",
 		mail : "",
