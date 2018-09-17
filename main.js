@@ -159,7 +159,6 @@ function index(){
 
 function filterLeague(param){
 	for(var i = 0 ; i < countries.length ; i++){
-		countries[i];
 		if(countries[i].league === param){
 			return countries[i];
 		}	
@@ -186,39 +185,38 @@ function renderClubs(dataLeague){
 
 function initializeClickHandler(){
 	var detail = document.querySelectorAll(".club");
-	for(var z = 0 ; z < detail.length ; z++){
-		var currentDetailBtn = detail[z];
+	for(var i = 0 ; i < detail.length ; i++){
+		var currentDetailBtn = detail[i];
 		currentDetailBtn.addEventListener('click', renderTrophies);		
 	}
 	var detailClubList = document.querySelectorAll(".clubList");
-	for(var z = 0 ; z < detailClubList.length ; z++){
-		var currentDetailBtn = detailClubList[z];
+	for(var i = 0 ; i < detailClubList.length ; i++){
+		var currentDetailBtn = detailClubList[i];
 		currentDetailBtn.addEventListener('click', renderTrophies);		
 	}
 }
 
 function renderTrophies(e){
 	var dataTeam = this.getAttribute('data-team');
-	displayClubInformations();
-	for(var a = 0 ; a < countries.length ; a++){
-		for(var y = 0 ; y < countries[a].clubs.length ; y++){
-			if(dataTeam === countries[a].clubs[y].name){
-				var teamDetailsTitles = "";
-				for(var i = 0 ; i < countries[a].clubs[y].titles.length ; i++){
-					var teamDetailsHtml = "<h2>" + countries[a].clubs[y].name + " Trophies</h2><img src='teams/" 
-					+ countries[a].clubs[y].logo + "'>"
-					teamDetailsTitles += "<p>" + countries[a].clubs[y].titles[i].title + " : " + countries[a].clubs[y].titles[i].count + "</p>";
-					console.log(countries[a].clubs[y].titles[i].title);
-				}
-				getClubElementByName(a, y);
-				informationsTeam.innerHTML = teamDetailsHtml + teamDetailsTitles;
-			}
-		}
+	displayClubInformations();	
+	var teamDetailsTitles = "";
+	var teamObject = getClubByName(dataTeam);
+	for(var i = 0 ; i < teamObject.titles.length ; i++){
+		var teamDetailsHtml = "<h2>" + teamObject.name + " Trophies</h2><img src='teams/" 
+		+ teamObject.logo + "'>";
+		teamDetailsTitles += "<p>" + teamObject.titles[i].title + " : " + teamObject.titles[i].count + "</p>";
 	}
+	informationsTeam.innerHTML = teamDetailsHtml + teamDetailsTitles;	
 }
 
-function getClubElementByName(league, team){
-	var detailsTeam = document.querySelector('.club[data-team="' + countries[league].clubs[team].name +'"]');
+function getClubByName(param){
+	for(var i = 0 ; i < countries.length ; i++){
+		for(var j = 0 ; j < countries[i].clubs.length ; j++){
+			if(countries[i].clubs[j].name === param){
+				return countries[i].clubs[j];
+			}	
+		}
+	}
 }
 
 function displayClubInformations(){
