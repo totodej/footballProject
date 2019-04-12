@@ -101,7 +101,7 @@ var countries = [{league : "", logo : "", page : "Home", clubs : ""},
 			{name : "Toulouse FC",logo : "toulouse.png", titles : [{title : "Ligue 1" , count : "0"}, {title : "Coupe de France" , count : "0"}, {title : "Coupe de la ligue" , count : "0"}, {title : "Troph\u00e9e des Champions" , count : "0"}]}]}];
 
 var bigFive = document.getElementById("bigFive");
-var menu = document.getElementById("menu");
+var menu = document.querySelector("#menu ul");
 var championship = document.getElementById("championship");
 var teamsList = document.getElementById("teamsList");
 var informationsTeam = document.querySelector(".informationsTeam");
@@ -120,7 +120,7 @@ var message = document.getElementById("message");
 function index(){
 	for( var i = 0 ; i < countries.length ; i++ ){
 		var country = countries[i];
-		menu.innerHTML += "<ul><li class='page' data-league='" + country.page + "'>" + country.page + "</li></ul>";
+		menu.innerHTML += "<li class='page' data-league='" + country.page + "'>" + country.page + "</li>";
 		bigFive.innerHTML += "<div id='competition'><h2>" + country.league + "</h2><div id='logo'><img src='logos/" + 
 		country.logo + "'></div><button class='button' data-league='" + country.page + "'>Click here</button></div>";
 		displayTitle.innerHTML = "<h1>The 5 biggest championships 2018-2019</h1>";
@@ -199,14 +199,25 @@ function initializeClickHandler(){
 function renderTrophies(e){
 	var dataTeam = this.getAttribute('data-team');
 	displayClubInformations();	
-	var teamDetailsTitles = "";
 	var teamObject = getClubByName(dataTeam);
+	var teamDetailsHtml = "<h2>" + teamObject.name + " Trophies</h2><img src='teams/" + teamObject.logo + "'>";
+	var teamTrophies = getClubTrophies(teamObject);
+	
+	informationsTeam.innerHTML = teamDetailsHtml + teamTrophies;	
+}
+
+function getClubTrophies(teamObject) {
+	var teamTrophies = "";
+	
 	for(var i = 0 ; i < teamObject.titles.length ; i++){
-		var teamDetailsHtml = "<h2>" + teamObject.name + " Trophies</h2><img src='teams/" 
-		+ teamObject.logo + "'>";
-		teamDetailsTitles += "<p>" + teamObject.titles[i].title + " : " + teamObject.titles[i].count + "</p>";
+		teamTrophies += getTrophyHtml(teamObject.titles[i]);
 	}
-	informationsTeam.innerHTML = teamDetailsHtml + teamDetailsTitles;	
+	
+	return teamTrophies;
+}
+
+function getTrophyHtml(trophy){
+	return "<p>" + trophy.title + " : " + trophy.count + "</p>";
 }
 
 function getClubByName(param){

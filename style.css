@@ -125,8 +125,10 @@ h3{
 	margin: 35px;
 }
 
-#menu {
+#menu ul{
 	display : flex;
+	margin : auto;
+	width : 80%;
 }
 
 #menu ul li a :first-child{
