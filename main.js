@@ -202,17 +202,14 @@ function renderTrophies(e){
 	var teamObject = getClubByName(dataTeam);
 	var teamDetailsHtml = "<h2>" + teamObject.name + " Trophies</h2><img src='teams/" + teamObject.logo + "'>";
 	var teamTrophies = getClubTrophies(teamObject);
-	
 	informationsTeam.innerHTML = teamDetailsHtml + teamTrophies;	
 }
 
 function getClubTrophies(teamObject) {
 	var teamTrophies = "";
-	
 	for(var i = 0 ; i < teamObject.titles.length ; i++){
 		teamTrophies += getTrophyHtml(teamObject.titles[i]);
 	}
-	
 	return teamTrophies;
 }
 
