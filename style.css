@@ -1,0 +1,378 @@
+body {
+  background: url("wallpaper.jpg");
+  background-attachment: fixed;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+  font-family: "Graduate", cursive;
+  padding: 10px;
+  font-size: 72px;
+  text-shadow: black 1px 1px, black -1px 1px, black -1px -1px, black 1px -1px;
+  color: green;
+}
+
+#bigFive {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.competition {
+  margin: 40px;
+  border: solid black 2px;
+  width: 300px;
+  height: 380px;
+  background-color: white;
+}
+
+#logo img {
+  width: 100%;
+  margin-left: 0px;
+}
+
+#logo {
+  margin: auto;
+  width: 200px;
+  height: 250px;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+}
+
+h2 {
+  text-align: center;
+}
+
+.button {
+  border: solid black 2px;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  padding: 3px 20px;
+  margin: auto;
+  text-decoration: none;
+  font-family: "Baloo Bhaina", cursive;
+  cursor: pointer;
+  width: 115px;
+}
+
+/**********************************************************************************/
+
+header {
+  background-color: #ecf0f1;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  border: solid black 1px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+#teamsList {
+  border: solid black 2px;
+  width: 400px;
+  background-color: #ecf0f1;
+  margin-left: 5px;
+  margin-top: 20px;
+}
+
+#championships {
+  display: none;
+  width: 100%;
+}
+
+.championship {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+  width: 100%;
+  row-gap: 38px;
+  margin-top: 20px;
+}
+
+.club {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border: solid black 2px;
+  width: 215px;
+  height: 240px;
+  border-radius: 20px;
+  background-color: #ecf0f1;
+  cursor: pointer;
+}
+
+.logoTeam {
+  display: flex;
+  justify-content: center;
+  height: 50%;
+}
+
+#team {
+  margin: auto;
+  width: 105px;
+}
+
+#menu ul {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 100%;
+  padding-inline-start: 0px;
+}
+
+#menu ul li {
+  padding: 20px 50px;
+  list-style: none;
+  font-size: 20px;
+  font-family: "Baloo Bhaina", cursive;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+}
+
+.informationsTeam h3 {
+  text-align: center;
+}
+
+table,
+tr,
+td {
+  border: solid black 1px;
+  border-collapse: collapse;
+  padding: 5px;
+  cursor: pointer;
+}
+
+table tr td:hover {
+  color: red;
+}
+
+/**********************************************************************************/
+
+footer {
+  background-color: green;
+  height: auto;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  border-top: solid black 1px;
+  opacity: 0.8;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+
+.footer-bloc {
+  width: 15%;
+}
+
+.footer-bloc ul {
+  height: 200px;
+  display: block;
+  padding-inline-start: 0px;
+}
+
+.footer-bloc ul li {
+  list-style: none;
+  font-family: "Baloo Bhaina", cursive;
+  color: white;
+}
+
+.footer-bloc ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.fab,
+.fas {
+  font-size: 200%;
+  color: white;
+}
+
+.red {
+  color: red;
+  font-size: 20px;
+}
+
+.green {
+  color: green;
+  font-size: 20px;
+}
+
+#copyright {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding: 5px 0px;
+  background-color: darkgreen;
+}
+
+/**********************************************************************************/
+/*Contact-form*/
+#displayForm {
+  display: none;
+  margin: auto;
+}
+
+#form {
+  margin-top: 50px;
+  border: solid black 2px;
+  border-radius: 5px;
+  padding: 30px 55px;
+  background-color: #ecf0f1;
+}
+
+input {
+  display: block;
+  padding: 5px;
+  width: 200px;
+  margin-bottom: 20px;
+  border: solid black 1px;
+  border-radius: 5px;
+}
+
+textarea {
+  width: 205px;
+  height: 70px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  font-family: "Baloo Bhaina", cursive;
+}
+
+button {
+  display: block;
+  padding: 5px;
+  width: 100px;
+  border-radius: 5px;
+  margin: 30px auto 0px auto;
+}
+
+/**********************************************************************************/
+
+#informationsBloc {
+  border: solid black 2px;
+  width: 50%;
+  display: none;
+  background-color: #ecf0f1;
+  margin: 20px auto auto;
+}
+
+#informationsBloc h2 {
+  margin-bottom: 30px;
+}
+
+#informationsBloc img {
+  width: 150px;
+  margin: auto;
+  display: block;
+}
+
+.informationsTeam p {
+  margin-left: 50px;
+  font-family: "Baloo Bhaina", cursive;
+}
+
+.fa-address-card {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 1700px) {
+  .championship {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  #menu ul {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+  }
+
+  #menu ul li {
+    padding: 10px 0px;
+  }
+
+  #championships section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  footer {
+    flex-wrap: wrap;
+  }
+
+  .footer-bloc {
+    width: 40%;
+    margin-bottom: 10px;
+  }
+
+  .footer-bloc ul {
+    height: initial;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 60px;
+  }
+
+  .championship {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #informationsBloc {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  h1 {
+    font-size: 45px;
+  }
+
+  #menu ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #menu ul li {
+    padding: 0px;
+  }
+
+  .championship {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  #bigFive {
+    row-gap: 40px;
+  }
+
+  .competition {
+    margin: 0px;
+  }
+
+  #informationsBloc {
+    width: 90%;
+  }
+}
