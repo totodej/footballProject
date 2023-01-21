@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Les 5 grands championnats</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Graduate"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhaina"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="displayTitle"></div>
+
+      <nav id="menu">
+        <ul>
+          <li class="page" data-league="Home">Accueil</li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <div id="bigFive"></div>
+
+      <div id="championships">
+        <section>
+          <table id="teamsList"></table>
+        </section>
+        <div class="championship"></div>
+        <div id="informationsBloc">
+          <div class="informationsTeam"></div>
+        </div>
+      </div>
+
+      <div id="displayForm">
+        <form id="form">
+          <div id="errorMessage"></div>
+          <label>Name : </label>
+          <input type="text" name="name" id="name" />
+          <label>Mail : </label>
+          <input type="email" name="mail" id="mail" />
+          <label>Subject : </label>
+          <input type="text" name="subject" id="subject" />
+          <label>Message : </label>
+          <textarea name="message" id="message"></textarea>
+          <button id="send">Send</button>
+        </form>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-bloc">
+        <ul>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Privacy Policies</a></li>
+          <li><a href="#">Publicity</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-bloc">
+        <ul>
+          <li><i class="fab fa-html5"></i>HTML</li>
+          <li><i class="fab fa-css3-alt"></i> CSS</li>
+          <li><i class="fab fa-js-square"></i> JAVASCRIPT</li>
+        </ul>
+      </div>
+
+      <div class="footer-bloc">
+        <ul>
+          <li>
+            <a href="#"><i class="fab fa-facebook-square"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer-bloc">
+        <ul>
+          <li id="contact"><i class="fas fa-address-card"></i></li>
+        </ul>
+      </div>
+      <div id="copyright">
+        © Copyright 2018 FootballProject | Developed TotoDej
+      </div>
+    </footer>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
