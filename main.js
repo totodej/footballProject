@@ -28,7 +28,7 @@ function index() {
     bigFive.innerHTML +=
       "<div class='competition'><h2>" +
       country.league +
-      "</h2><div id='logo'><img src='../assets/logos/" +
+      "</h2><div id='logo'><img src='./assets/logos/" +
       country.logo +
       "' alt='" +
       country.league +
@@ -97,7 +97,7 @@ function renderClubs(dataLeague) {
       club.name +
       "'><h2>" +
       club.name +
-      "</h2><div class='logoTeam'><img src='../assets/teams/" +
+      "</h2><div class='logoTeam'><img src='./assets/teams/" +
       club.logo +
       "' alt='" +
       club.name +
@@ -132,7 +132,7 @@ function renderTrophies(e) {
   let teamDetailsHtml =
     "<h2>" +
     teamObject.name +
-    "</h2><img src='../assets/teams/" +
+    "</h2><img src='./assets/teams/" +
     teamObject.logo +
     "' alt='" +
     teamObject.name +
